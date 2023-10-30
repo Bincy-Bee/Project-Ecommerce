@@ -4,7 +4,7 @@ const home = (req,res)=>{
     res.send("welcome to home")
 }
 const index = (req,res)=>{
-    res.render("index")
+    res.render("index", {user : req.user})
 }
 const signup = async(req,res)=>{
     try {
@@ -49,12 +49,12 @@ const resetpass = async (req,res)=>{
     if(req.user.password == oldpassword){
         let data = await usermodel.findByIdAndUpdate(req.user.id,{password : newpassword});
         let passupdate = await usermodel.findById(req.user.id);
-        res.send(passupdate);
+        // res.send(passupdate);
+        res.render("login")
     }
     else{
         res.send("Wrong password");
     }
-    res.render("login")
 }
 
 const loginPage = (req,res)=>{
