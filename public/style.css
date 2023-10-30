@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}   
+nav ul,li{
+    list-style: none;
+}
+nav ul li a{
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+form input{
+    padding: 8px 15px;
+    border-radius: 10px;
+    width: 25%;
+}
+.user button{
+    padding: 5px 10px;
+}
+.sform form{
+    margin: auto;
+    text-align: center;
+}
+.supform form{
+    margin: auto;
+    text-align: center;
+}
+.supform .google{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    color: indianred;
+}
+.sform .google{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    color: indianred;
+}
+.sform .reset{
+    padding-left: 200px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.resetform form{
+    margin: auto;
+    text-align: center;
+}
