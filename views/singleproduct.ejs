@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Product</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <%- include("nav") %>
+    <section class="singledetailes">
+        <div class="row">
+            <div class="photosec">
+                <img alt="" id="singleproimg" src=<%= singleitem.image %> >
+            </div>
+            <div class="detailesec">
+                <h4><%= singleitem.title %></h4>
+                <p><%= singleitem.description %></p>
+                <p>Rs. <%= singleitem.price %></p>
+                <h5>Size : <%= singleitem.size %></h5>
+                <button class="addtocart">Add to Cart</button>
+                <button class="share"><i class="material-icons">&#xe163;</i>Share</button>
+            </div>
+        </div>
+    </section>
+</body>         
+</html>

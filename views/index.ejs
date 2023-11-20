@@ -35,7 +35,7 @@
         <div class="row">
             <div class="filter">
                 <div class="profile">
-                    <h6>Wecome, <%= user.username %></h6>             
+                    <h6>Welcome, <%= user.username %></h6>             
                 </div>
                 <div class="price">
                     <h3>Price</h3>
@@ -79,7 +79,10 @@ const display = (data)=>{
         size.innerHTML = ele.size;
 
         let div = document.createElement("div");
-        div.setAttribute("id","subdiv")
+        div.setAttribute("id","subdiv");
+        div.addEventListener("click",()=>{
+            window.location.href= `/product/singleproduct/${ele._id}`
+        })
 
         div.append(img, title, desc, price, size);
         document.getElementById("display").append(div)

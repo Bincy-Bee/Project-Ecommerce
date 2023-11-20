@@ -29,5 +29,15 @@ const createproduct = async(req,res)=>{
     }
 }
 
+const singlepro = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        console.log(id)
+        const singleitem = await productmodel.findById(id)
+        res.render("singleproduct", {singleitem})
+    } catch (error) {
+        return res.send(error.message)
+    }
+}
 
-module.exports={productPage, indexPage, allproduct, createproduct, productform}
+module.exports={productPage, indexPage, allproduct, createproduct, productform, singlepro}

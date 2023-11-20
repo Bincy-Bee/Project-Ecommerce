@@ -316,7 +316,10 @@ form input{
 }
 .ui #display #subdiv{
     padding: 10px;
-    /* border: 0.5px solid red; */
+}
+.ui #display #subdiv h4,p,h5{
+    text-align: left;
+    padding-left: 20px;
 }
 .main .filter .price h3{
     margin: 10px 0px;
@@ -344,4 +347,53 @@ form input{
     margin: 10px 0px;
     margin-left: 10px;
     color: rgb(129, 9, 9);
+}
+.singledetailes{
+    margin-top: 15px;
+    position: relative;
+}
+.singledetailes .photosec{
+    width: 30%;
+    margin-left: 20px;
+}
+.singledetailes .photosec img{
+    width: 400px;
+    height: 500px;
+}
+.singledetailes .detailesec{
+    width: 70%;
+    margin: 0px 20px;
+    text-align: left;
+}
+.singledetailes .detailesec h4{
+    margin-left: 20px;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.singledetailes .detailesec p{
+    color: rgba(255, 0, 0, 0.555);
+    font-size: 24px;
+    margin: 15px 0px;
+}
+.singledetailes .detailesec h5{
+    font-size: 24px;
+}
+.singledetailes .detailesec button{
+    margin-top: 30px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgba(255, 0, 0, 0.616);
+}
+.singledetailes .detailesec .share{
+    font-size: 20px;
+    position: absolute;
+    top:0px;
+    right: 20px;
+}
+.singledetailes .detailesec .share i{
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
 }
