@@ -50,7 +50,7 @@ const resetpass = async (req,res)=>{
         let data = await usermodel.findByIdAndUpdate(req.user.id,{password : newpassword});
         let passupdate = await usermodel.findById(req.user.id);
         // res.send(passupdate);
-        res.render("login")
+        res.send("Password update sucessfully")
     }
     else{
         res.send("Wrong password");

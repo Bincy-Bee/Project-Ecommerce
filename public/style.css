@@ -11,6 +11,30 @@ header{
     padding: 10px;
     border-bottom: 1px solid black;
 }
+header .logo a{
+    color: red;
+    text-shadow: 1px 1px 2px black;
+    font-weight: 700;
+    font-size: 24px;
+}
+header .search .searchin{
+    width: 200px;
+    padding: 5px 10px;
+    border: 1px solid red;
+    border-radius: 5px 0px 0px 5px;
+    outline: none;
+}
+header .search .searchbtn{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 0px 5px 5px 0px;
+    padding: 5px 10px;
+}
+header .search .searchbtn:hover{
+    background-color: black;
+}
 .row{
     display: flex;
     flex-wrap: nowrap;
@@ -20,8 +44,25 @@ nav ul,li{
     list-style: none;
 }
 nav ul li a{
-    padding: 5px 10px;
+    /* padding: 5px 0px; */
+    margin: 5px 10px;
+    color: red;
+    font-weight: 500;
     text-transform: uppercase;
+}
+nav ul li a:hover{
+    border-bottom: 1px solid black;
+}
+
+header .user button{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px;
+}
+header .user button:hover{
+    background-color: black;
 }
 form input{
     padding: 8px 15px;
@@ -31,32 +72,276 @@ form input{
 .user button{
     padding: 5px 10px;
 }
-.sform form{
-    margin: auto;
+
+.supform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.supform .title{
+    margin-bottom: 30px;
     text-align: center;
 }
 .supform form{
     margin: auto;
+    
+    width: 400px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+}
+.supform form label{
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 5px ;
+}
+.supform form input{
+    width: 100%;
+    border: 1px solid red;
+}
+.supform form .upsub{
+    width: 30%;
     text-align: center;
+    margin: auto;
+  
+}
+.supform form .upsub input{
+    margin-top: 10px;
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px; 
+}
+.supform form .upsub input:hover{
+    background-color: black;
+}
+.supform .or{
+    font-size: 10px;
+    margin: 20px 0px;
+    text-align: center;
+}
+.supform .google img{
+    width: 100%;
 }
 .supform .google{
     text-align: center;
-    margin-top: 15px;
-    font-size: 20px;
-    color: indianred;
+    margin: auto;
+    width: 20%;
+}
+
+/* Sign In Form */
+
+.sform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.sform .title{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.sform form{
+    margin: auto;
+    width: 400px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+}
+.sform form label{
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.sform form input{
+    width: 100%;
+    border: 1px solid red;
+}
+.sform form .insub{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+  
+}
+.sform form .insub input{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px; 
+}
+.sform form .insub input:hover{
+    background-color: black;
+}
+.sform .or{
+    font-size: 10px;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.sform .google img{
+    width: 100%;
 }
 .sform .google{
     text-align: center;
-    margin-top: 15px;
-    font-size: 20px;
-    color: indianred;
+    margin: auto;
+    width: 20%;
 }
 .sform .reset{
-    padding-left: 200px;
     display: inline-block;
+    text-align: right;
+    padding-left: 270px;
+    font-size: 12px;
     margin-top: 10px;
+}
+/*Reset form*/
+.resetform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
 }
 .resetform form{
     margin: auto;
+    width: 400px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+}
+.resetform .title{
+    margin-bottom: 30px;
     text-align: center;
+}
+.resetform form input{
+    width: 100%;
+    border: 1px solid red;
+}
+.resetform form label{
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.resetform form .resub{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+}
+.resetform form .resub input{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px; 
+}
+.resetform form .resub input:hover{
+    background-color: black;
+    
+}
+.addproduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.addproduct form{
+    margin: auto;
+    width: 400px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px rgb(83, 83, 83);
+}
+
+.addproduct form input{
+    width: 100%;
+    border: 1px solid red;
+}
+.addproduct form label{
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.addproduct form .prosub{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+}
+.addproduct form .prosub input{
+    background-color: red;
+    color: rgb(255, 255, 255);
+    border: none;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 5px; 
+}
+.addproduct form .prosub input:hover{
+    background-color: black;
+    
+}
+.main{
+    background-color: rgba(255, 0, 0, 0.295);
+    padding: 3px;
+}
+.filter{
+    width: 20%;
+    margin: 3px;
+    background-color: white;
+}
+.ui{
+    width: 80%;
+    margin: 3px;
+    background-color: white;
+}
+.ui #display{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* gap: 10px; */
+    text-align: center;
+}
+.ui #display img{
+    object-fit: contain;
+    height: 250px;
+}
+.ui #display #subdiv{
+    padding: 10px;
+    /* border: 0.5px solid red; */
+}
+.main .filter .price h3{
+    margin: 10px 0px;
+    margin-left: 10px;
+}
+.main .filter .price button{
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: none;
+    padding: 5px 10px;
+    background-color: rgba(255, 0, 0, 0.185);
+    border-radius: 5px;
+}
+.main .filter .gender input{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    accent-color: rgba(255, 0, 0, 0.13);
+}
+.main .filter .gender h3{
+    margin: 10px 0px;
+    margin-left: 10px;
+}
+.main .filter .profile h6{
+    margin: 10px 0px;
+    margin-left: 10px;
+    color: rgb(129, 9, 9);
 }

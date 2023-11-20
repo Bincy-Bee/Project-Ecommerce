@@ -7,6 +7,7 @@ const { router } = require('./routes/user.route');
 const { prouter } = require('./routes/product.route');
 const { localAuth, googleAuth } = require('./helper/local');
 require("dotenv").config();
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(session({secret : "secret"}));

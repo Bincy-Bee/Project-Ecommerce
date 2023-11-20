@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include("nav") %>
+    <section class="addproduct">
+        <form action="/product/createproduct" class="addpro" method="post">
+            <label for="title">Title</label><br>
+            <input type="text" name="title" placeholder="" id="title"><br><br>
+            <label for="description">Description</label><br>
+            <input type="text" name="description" placeholder="" id="description"><br><br>
+            <label for="price">Price</label><br>
+            <input type="number" name="price" placeholder="" id="price"><br><br>
+            <label for="size">Size</label><br>
+            <input type="text" name="size" placeholder="" id="size"><br><br>
+            <label for="category">Category</label><br>
+            <input type="text" name="category" placeholder="" id="category"><br><br>
+            <label for="image">Image</label><br>
+            <input type="text" name="image" placeholder="" id="image"><br><br>
+            <div class="prosub">
+                <input type="submit" value="Add"><br>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

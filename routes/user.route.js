@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const { home, signup, signupPage, login, loginPage, googleCallback, index, reset, resetpass, profile } = require('../controller/user.controller');
 const passport = require('passport');
+const { isAuth } = require('../middleware/auth');
 const router = Router();
 
 router.get("/", home);
@@ -17,7 +18,7 @@ router.get("/login", loginPage);
 
 router.get("/reset", reset);
 
-router.patch("/reset", resetpass);
+router.patch("/reset",isAuth, resetpass);
 
 router.get("/profile", profile);
 

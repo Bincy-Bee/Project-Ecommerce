@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <div class="row">
             <div class="logo">
-                <a href="index.html">LOGITECH</a>
+                <a href="/index">OUTLOOK</a>
             </div>
             <nav>
                 <ul class="row">
@@ -24,11 +24,75 @@
                 <a href="/user/signup"><button>Sign Up</button></a>
             </div>
         </div>
-    </header>
-    <section class="profile">
+    </header> -->
+    <%- include("nav") %>
+    <!-- <section class="profile">
         <h6>Wecome,</h6>
-        <h5>User : <%=user.username %></h5>
-        <h5>UserID: <%=user.email %></h5>
+        <h5>User : <%= user.username %></h5>
+        <h5>UserID: <%= user.email %></h5>
+    </section> -->
+    <section class="main">
+        <div class="row">
+            <div class="filter">
+                <div class="profile">
+                    <h6>Wecome, <%= user.username %></h6>             
+                </div>
+                <div class="price">
+                    <h3>Price</h3>
+                    <button>Low to High</button>
+                    <button>High to Low</button>
+
+                </div>
+                <div class="gender">
+                    <h3>Gender</h3>
+                    <input type="radio" name="gender" value="Men">
+                    <label for="gender">Men</label><br>
+                    <input type="radio" name="gender" value="Women">
+                    <label for="gender">Women</label>
+                </div>
+            </div>
+            <div class="ui">
+                <div id="display">
+                </div>
+            </div>
+        </div>
     </section>
 </body>
+<script>
+
+const display = (data)=>{
+    document.getElementById("display").innerHTML="";
+    data.map((ele)=>{
+        let img = document.createElement("img")
+        img.src = ele.image;
+
+        let title = document.createElement("h4");
+        title.innerHTML = ele.title;
+
+        let desc = document.createElement("p");
+        desc.innerHTML = ele.description;
+
+        let price = document.createElement("P");
+        price.innerHTML = ele.price;
+
+        let size = document.createElement("h5");
+        size.innerHTML = ele.size;
+
+        let div = document.createElement("div");
+        div.setAttribute("id","subdiv")
+
+        div.append(img, title, desc, price, size);
+        document.getElementById("display").append(div)
+    })
+}
+    const get = async()=>{
+        fetch(`http://localhost:8090/product/allproducts`)
+        .then((res)=> res.json())
+        .then((data)=>{
+            console.log(data);
+            display(data)
+        })
+    }
+    get();
+</script>
 </html>

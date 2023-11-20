@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <%- include("nav") %>
     <section class="sform">
         <form action="/user/login" method="post">
+            <h2 class="title">LOG IN</h2>
+            <label for="email">Email</label>
             <input type="email" placeholder="email" name="email"><br><br>
+            <label for="password">Password</label>
             <input type="text" placeholder="password" name="password"><br>
             <a href="/user/reset" class="reset">Reset Password</a>
             <br><br>
-            <input type="submit" value="Log In"><br>
+            <div class="insub">
+                <input type="submit" value="Log In"><br>
+            </div>
+            <p class="or">OR LogIn With</p>
+            <div class="google">
+                <a href="#"><img src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png" alt=""></a>
+            </div>
         </form>
-        <div class="google">
-            <a href="/user/auth/google">Login with Google</a>
-        </div>
     </section>
 </body>
 </html>
