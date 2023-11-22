@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Product</title>
     <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 </head>
 <body>
     <%- include("nav") %>
@@ -19,10 +19,29 @@
                 <p><%= singleitem.description %></p>
                 <p>Rs. <%= singleitem.price %></p>
                 <h5>Size : <%= singleitem.size %></h5>
-                <button class="addtocart">Add to Cart</button>
+                <button class="buy">Buy Now</button>
+                <button class="addtocart" id="addcart">Add to Cart</button>
                 <button class="share"><i class="material-icons">&#xe163;</i>Share</button>
+                <div class="bankoffer">
+                    <h5>Available offers</h5>
+                    <p><i class="material-icons">&#xe160;</i><span>Bank Offers</span>10% off on Axis Bank Credit Card EMI Transactions, up to ₹1,500 on orders of ₹5,000 and aboveT&C</p>
+                    <p><i class="material-icons">&#xe160;</i><span>Bank Offers</span>10% off on Flipkart Axis Bank Credit Card EMI Transactions, up to ₹1500 on orders of ₹5000 and aboveT&C</p>
+                    <p><i class="material-icons">&#xe160;</i><span>Bank Offers</span>10% off on Citi Credit Card EMI Transactions, up to ₹1,500 on orders of ₹5,000 and aboveT&C</p>
+                    <p><i class="material-icons">&#xe160;</i>Buy for 150 get ₹100 off your Next BuyT&C</p>
+                </div>
             </div>
         </div>
     </section>
-</body>         
+</body>
+<script>
+    document.getElementById("addcart").addEventListener("click",(e)=>{
+        e.preventDefault();
+
+        let url = window.location.href.split("/");
+        console.log(url)
+        let id = url[url.length - 1];
+        console.log(id)
+        fetch(`/`)
+    })
+</script>     
 </html>

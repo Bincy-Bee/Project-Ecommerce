@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema({
     size:String,
     category:String,
     image:String,
+    userID:{type: mongoose.Schema.Types.ObjectId, ref:"productt"}
     // ratings: [{value:Number }],
     // reviews: [{text: String}],
 })

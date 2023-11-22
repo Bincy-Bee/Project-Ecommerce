@@ -1,7 +1,8 @@
+const jwt = require('jsonwebtoken');
 const { usermodel } = require("../models/user.model")
 
 const home = (req,res)=>{
-    res.send("welcome to home")
+    res.send({message: "welcome to home"})
 }
 const index = (req,res)=>{
     res.render("index", {user : req.user})
@@ -10,7 +11,7 @@ const signup = async(req,res)=>{
     try {
         let data = await usermodel.findOne({email : req.body.email});
         if(data){
-            return res.send("user already exits")
+            return res.send({message : "user already exits"})
         }
         else{
             data = await usermodel.create(req.body)
@@ -27,14 +28,16 @@ const signupPage = (req,res)=>{
 
 const login = async(req,res)=>{
     try {
-        let data = await usermodel.findOne({email : req.body.email});
+        const {email, password} = req.body;
+        let data = await usermodel.findOne({email : email});
+        let token = jwt.sign({id : data.id}, "secret")
         if(!data){
-            return res.status(401).send("Invalid User");
+            return res.status(401).send({message:"Invalid User"});
         }
-        if(data.password != req.body.password){
-            return res.status(401).send("Invalid Password");
+        if(data.password != password){
+            return res.status(401).send({message: "Invalid Password"});
         }
-        return res.send("loggeg In Successfully")
+        return res.cookie("token", token).send({message :"loggeg In Successfully"})
     } catch (error) {
         return res.send(error.message);
     }

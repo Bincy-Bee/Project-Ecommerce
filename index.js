@@ -2,6 +2,7 @@ const express = require('express');
 const { connection } = require('./config/connection');
 const app = express();
 const session = require('express-session');
+const cookie = require('cookie-parser')
 const passport = require('passport');
 const { router } = require('./routes/user.route');
 const { prouter } = require('./routes/product.route');
@@ -18,6 +19,7 @@ app.use(passport.session());
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
+app.use(cookie());
 app.use("/user",router);
 app.use("/product", prouter)
 
