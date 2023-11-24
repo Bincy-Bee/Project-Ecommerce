@@ -18,6 +18,6 @@ prouter.get("/cart", cartpage);
 
 prouter.get("/allcartitems", getCart);
 
-prouter.post("/cart", addcart)
+prouter.get("/cart/:id", addcart)
 
 module.exports={prouter}

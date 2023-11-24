@@ -24,7 +24,7 @@ const allproduct = async(req,res)=>{
 const createproduct = async(req,res)=>{
     try {
         let product = await productmodel.create(req.body);
-        return res.send("New Product Added Successfully by admin")
+        return res.cookie("productid", product.id).send("New Product Added Successfully by admin")
     } catch (error) {
         return res.send(error.message)
     }
@@ -45,46 +45,71 @@ const cartpage = (req,res)=>{
 
 const getCart = async(req,res)=>{
     try {
-        let data = await cartmodel.find().populate("productID");
+        let data = await cartmodel.find();
         res.send(data)
     } catch (error) {
         return res.send(error.message)
     }
 }
 const addcart = async(req,res)=>{
-    console.log(req.cookies);
-    const {id} = req.cookies;
-    console.log(id)
-    const userID = id;
-    const {productID, quantity} = req.body;
+    const {id}= req.params;
+    console.log( id)
+    const userID = req.user.id;
+    req.body.userID = req.user.id;
+    req.body.productID = id;
     try {
+        let item = await productmodel.findById(id);
         let cart = await cartmodel.findOne({userID});
+        console.log(cart)
         if(cart){
-            let index =  cart.products.findIndex(p => p.productID == productID);
-            if(index > -1){
-                //product exists in the cart, update the quantity
-                let productItem = cart.products[index];
-                productItem.quantity = quantity;
-                cart.products[index] = productItem;
+            let index = cart.products.findIndex((p)=> p.productId == item.id);
+            console.log(index)
+            if( index > -1){
+                let proitem = cart.products[index];
+                proitem.quantity = proitem.quantity +1;
+                cart.products[index] = proitem;
             }
-            else {
-                //product does not exists in cart, add new item
-                cart.products.push({ productID, quantity });
-              }
-              cart = await cart.save();
-              return res.send(cart)
+            else{
+                cart.products.push({productId : item.id, title:item.title, description: item.description, price:item.price, size:item.size, category:item.category, image:item.image, quantity:1})
+            }
+            cart =  await cart.save();
+            res.send(cart)
         }
         else{
-            //no cart for user, create new cart
-            const newCart = await cart.create({
-                userID,
-                products: [{ productID, quantity }]
-            })
-            return res.send(newCart)
+            let newCart = await cartmodel.create({
+                userID : req.user.id,
+                products : [{
+                    productId : item.id,
+                    title : item.title,
+                    description : item.description,
+                    price : item.price,
+                    size : item.size,
+                    category : item.category,
+                    image : item.image,
+                    quantity:1,
+                }]
+            });
+            res.send(newCart)
         }
+        
     } catch (error) {
         return res.send(error.message)
     }
+    // console.log(item)
+    // let newCart = await cartmodel.create({
+    //     userID : req.user.id,
+    //     products : [{
+    //         productId : item.id,
+    //         title : item.title,
+    //         description : item.description,
+    //         price : item.price,
+    //         size : item.size,
+    //         category : item.category,
+    //         image : item.image,
+    //         quantity:1,
+    //     }]
+    // });
+    // res.send(newCart)
 }
 
 
