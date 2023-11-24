@@ -11,8 +11,8 @@
     <%- include("nav") %>
     <section class="cartsec">
         <div class="row">
-            <div class="prodetail">
-                
+            <div class="prodetail" >
+                <div id="cartdisplay"></div>
             </div>
             <div class="total">
                 <div>
@@ -20,12 +20,12 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <p>Price</p>
-                    <p>₹0.00</p>
+                    <p>Price (<span id="totalqty"></span> items)</p>
+                    <p id="totalprice">₹0.00</p>
                 </div>
                 <div class="row">
-                    <p>Discount</p>
-                    <p>- ₹0.00</p>
+                    <p>Discount <span>(12%)</span></p>
+                    <p id="discount">- ₹0.00</p>
                 </div>
                 <div class="row">
                     <p>Delivery Charges</p>
@@ -34,10 +34,86 @@
                 <hr>
                 <div class="row">
                     <h4>Total Amonut</h4>
-                    <h4>₹0.00</h4>
+                    <h4 id="totalamnt">₹0.00</h4>
                 </div>
             </div>
         </div>
     </section>
-</body>   
+</body>
+<script>
+    const displaycartitems=(data)=>{
+        let sum = 0;
+        let discount = 0;
+        let totalqty = 0;
+        document.getElementById("cartdisplay").innerHTML="";
+        data.map((ele)=>{
+            let img = document.createElement("img")
+            img.src = ele.image;
+
+            let div1 = document.createElement("div");
+            div1.setAttribute("class","imgItem");
+            div1.append(img)
+
+            let title = document.createElement("h4");
+            title.innerHTML = ele.title;
+
+            let desc = document.createElement("p");
+            desc.innerHTML = ele.description;
+
+            let price = document.createElement("P");
+            price.innerHTML = `Rs.: ${ele.price}*`;
+
+            let size = document.createElement("h5");
+            size.innerHTML = `Size : ${ele.size}`;
+
+            let div2 = document.createElement("div");
+            div2.setAttribute("class","detailItem");
+            div2.append(title, desc, price, size)
+
+            let dlt = document.createElement("button");
+            dlt.innerHTML = `Remove`;
+            dlt.setAttribute("class","dtlItem");
+
+            let plus = document.createElement("button");
+            plus.innerHTML = `+`;
+
+            let qty = document.createElement("p")
+            qty.innerHTML=ele.quantity
+
+            let totalprice = ele.price * ele.quantity
+            sum = sum + totalprice; 
+            dis = ((12/100) * sum);
+            totalqty = totalqty + ele.quantity;
+
+            let minus = document.createElement("button");
+            minus.innerHTML = `-`;
+
+            let div3 = document.createElement("div");
+            div3.setAttribute("class","plusmindel");
+            div3.append(plus, qty, minus, dlt)
+
+            let div = document.createElement("div");
+            div.setAttribute("class","maindiv")
+            div.append(div1,div2)
+            
+            document.getElementById("cartdisplay").append(div, div3);
+            document.getElementById("totalqty").innerHTML= totalqty;
+            document.getElementById("totalprice").innerHTML= `Rs. ${sum.toFixed(2)}`;
+            document.getElementById("discount").innerHTML= `- Rs. ${dis.toFixed(2)}`;
+            document.getElementById("totalamnt").innerHTML= `Rs. ${(sum - dis).toFixed(2)}`;
+
+        })
+    }
+
+    const get = async()=>{
+        fetch(`http://localhost:8090/product/allcartitems`)
+        .then((res)=>res.json())
+        .then((data)=> {
+            console.log(data.products)
+            let alluseritems = data.products;
+            displaycartitems(alluseritems)
+        })
+    }
+    get();
+</script>
 </html>

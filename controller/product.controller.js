@@ -45,7 +45,8 @@ const cartpage = (req,res)=>{
 
 const getCart = async(req,res)=>{
     try {
-        let data = await cartmodel.find();
+        const userID = req.user.id;
+        let data = await cartmodel.findOne({userID});
         res.send(data)
     } catch (error) {
         return res.send(error.message)
@@ -53,17 +54,16 @@ const getCart = async(req,res)=>{
 }
 const addcart = async(req,res)=>{
     const {id}= req.params;
-    console.log( id)
     const userID = req.user.id;
     req.body.userID = req.user.id;
-    req.body.productID = id;
+    
     try {
         let item = await productmodel.findById(id);
         let cart = await cartmodel.findOne({userID});
-        console.log(cart)
+    
         if(cart){
             let index = cart.products.findIndex((p)=> p.productId == item.id);
-            console.log(index)
+    
             if( index > -1){
                 let proitem = cart.products[index];
                 proitem.quantity = proitem.quantity +1;
@@ -95,21 +95,7 @@ const addcart = async(req,res)=>{
     } catch (error) {
         return res.send(error.message)
     }
-    // console.log(item)
-    // let newCart = await cartmodel.create({
-    //     userID : req.user.id,
-    //     products : [{
-    //         productId : item.id,
-    //         title : item.title,
-    //         description : item.description,
-    //         price : item.price,
-    //         size : item.size,
-    //         category : item.category,
-    //         image : item.image,
-    //         quantity:1,
-    //     }]
-    // });
-    // res.send(newCart)
+ 
 }
 
 

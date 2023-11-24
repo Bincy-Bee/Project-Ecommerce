@@ -435,6 +435,7 @@ form input{
 }
 .cartsec .total{
     width: 30%;
+    height: 230px;
     box-shadow: 0px 0px 2px grey;
 }
 .cartsec .total h3{
@@ -452,4 +453,49 @@ form input{
 .cartsec .total hr{
     border: 1px solid rgba(128, 128, 128, 0.24);
     margin: 0px 10px;
+}
+
+.cartsec .prodetail #cartdisplay .maindiv{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 15px;
+    border-top: 1px solid rgba(128, 128, 128, 0.192);
+}
+.cartsec .prodetail #cartdisplay .maindiv .imgItem{
+    margin-right: 10px;
+}
+.cartsec .prodetail #cartdisplay .maindiv .imgItem img{
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+}
+.cartsec .prodetail #cartdisplay .maindiv .detailItem{
+    margin-left: 10px;
+}
+.cartsec .prodetail #cartdisplay .maindiv .detailItem p,h5{
+    padding: 0;
+}
+.cartsec .prodetail #cartdisplay .plusmindel{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+    margin-left: 20px;
+}
+.cartsec .prodetail #cartdisplay .plusmindel button{
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.24);
+    border: 1px solid rgba(128, 128, 128, 0.192);
+}
+.cartsec .prodetail #cartdisplay .plusmindel .dtlItem{
+    padding: 5px 20px;
+    margin-left: 50px;
+}
+
+.cartsec .prodetail #cartdisplay .plusmindel p {
+    padding: 5px 20px;
+    margin: 0px 5px;
+    border: 1px solid rgba(128, 128, 128, 0.192);
 }
