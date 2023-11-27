@@ -98,6 +98,68 @@ const addcart = async(req,res)=>{
  
 }
 
+const cartqtyplus = async(req,res)=>{
+    const {id}= req.params;
+    const userID = req.user.id;
+    req.body.userID = req.user.id;
+    
+    try {
+        let cart = await cartmodel.findOne({userID});
+        if(cart){
+            let index = cart.products.findIndex((p)=> p._id == id);
+            if( index > -1){
+                let proitem = cart.products[index];
+                proitem.quantity = proitem.quantity +1;
+                cart.products[index] = proitem;
+            }
+            cart =  await cart.save();
+            res.send(cart)
+        }
+    } catch (error) {
+        return res.send(error.message)
+    }
+}
+
+const cartqtyminus = async(req,res)=>{
+    const {id}= req.params;
+    const userID = req.user.id;
+   
+    try {
+        let cart = await cartmodel.findOne({userID});
+        if(cart){
+            let index = cart.products.findIndex((p)=> p._id == id);
+            if( index > -1){
+                let proitem = cart.products[index];
+                proitem.quantity = proitem.quantity - 1;
+                cart.products[index] = proitem;
+            }
+            cart =  await cart.save();
+            res.send(cart)
+        }
+    } catch (error) {
+        return res.send(error.message)
+    }
+}
+const removeItem = async(req,res)=>{
+    const {id}= req.params;
+    console.log(id)
+    const userID = req.user.id;
+    try {
+        let usercart = await cartmodel.findOne({userID});
+        if(usercart){
+            let index = usercart.products.findIndex((p)=> p._id == id);
+            console.log(index)
+            if( index > -1){
+                usercart.products.splice(index,1)[0];
+            }
+            usercart =  await usercart.save();
+            res.send(usercart)
+        }
+      
+    } catch (error) {
+        return res.send(error.message)
+    }
+}
 
 
-module.exports={productPage, indexPage, allproduct, createproduct, productform, singlepro, cartpage, getCart, addcart}
+module.exports={productPage, indexPage, allproduct, createproduct, productform, singlepro, cartpage, getCart, addcart, cartqtyplus, cartqtyminus,removeItem}

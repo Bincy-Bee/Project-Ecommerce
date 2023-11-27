@@ -73,9 +73,24 @@
             let dlt = document.createElement("button");
             dlt.innerHTML = `Remove`;
             dlt.setAttribute("class","dtlItem");
+            dlt.addEventListener("click",(e)=>{
+                e.preventDefault();
+                fetch(`http://localhost:8090/product/cart/${ele._id}`,{
+                    method : "DELETE",
+                })
+                window.location.reload();
+            })
 
             let plus = document.createElement("button");
             plus.innerHTML = `+`;
+            plus.addEventListener("click", (e)=>{
+                e.preventDefault();
+                fetch(`http://localhost:8090/product/cart/${ele._id}`,{
+                    method : "PATCH",
+                    headers : {"Content-Type": "application/json"}
+                })
+                window.location.reload();
+            })
 
             let qty = document.createElement("p")
             qty.innerHTML=ele.quantity
@@ -87,6 +102,14 @@
 
             let minus = document.createElement("button");
             minus.innerHTML = `-`;
+            minus.addEventListener("click", (e)=>{
+                e.preventDefault();
+                fetch(`http://localhost:8090/product/cartminus/${ele._id}`,{
+                    method : "PATCH",
+                    headers : {"Content-Type": "application/json"}
+                })
+                window.location.reload();
+            })
 
             let div3 = document.createElement("div");
             div3.setAttribute("class","plusmindel");
